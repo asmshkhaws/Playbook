@@ -1,0 +1,9 @@
+---
+- name: My Teat PB
+  hosts: all
+  become: true
+  tasks:
+    - name: Create a Directory
+      file:
+        path: /home/ansadmin/demodir
+        state: directory

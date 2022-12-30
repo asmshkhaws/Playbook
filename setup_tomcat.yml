@@ -1,0 +1,37 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  tasks:
+    - name: Install java
+      yum:
+        name: java
+        state: present
+      when: ansible_os_family == "RedHat"
+    
+    - name: Install java on Debian
+      apt:
+        name: default-java
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Download Tomcat Package
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.84/bin/apache-tomcat-8.5.84.tar.gz
+        dest: /opt
+
+    - name: Extract Tomcat
+      unarchive:
+        src: /opt/apache-tomcat-8.5.84.tar.gz
+        dest: /opt
+        remote_src: true
+
+    - name: adding execute permission
+      file:
+        path: /opt/apache-tomcat-8.5.84/bin/startup.sh
+        mode: 0777
+
+    - name: start tomcat service
+      shell: nohup ./startup.sh
+      args:
+        chdir: /opt/apache-tomcat-8.5.84/bin      

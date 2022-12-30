@@ -1,0 +1,11 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  tasks:
+    - name: Copy a file
+      copy:
+       src: /home/ansadmin/index.html
+       dest: /home/ansadmin
+       mode: 0666
+       

@@ -1,0 +1,35 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Start httpd
+      service:
+        name: httpd----
+        state: started
+      when: ansible_os_family == "RedHat"
+      ignore_errors: yes
+
+    - name: Install apache2
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Start apache2
+      service:
+        name: apache2
+        state: started
+      when: ansible_os_family == "Debian"
+
+    - name: Copy Index file
+      copy:
+        src: /home/ansadmin/index.html
+        dest: /var/www/html
+        mode: 0666

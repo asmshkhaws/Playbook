@@ -1,0 +1,14 @@
+---
+- name: My test Pb
+  hosts: all
+  become: true
+  tasks:
+    - name: Stop httpd service
+      service:
+        name: httpd
+        state: stopped
+    - name: Uninstall httpd
+      yum:
+        name: httpd
+        state: absent
+

@@ -1,0 +1,11 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  tasks:
+    - name: create multiple users
+      user: name="{{ item }}" state=present
+      with_items:
+        - pankaj
+        - rahul
+        - aryan  

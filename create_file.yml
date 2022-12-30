@@ -1,0 +1,10 @@
+---
+ - name: My Test PB
+   hosts: all
+   become: true
+   tasks:
+   - name: Create a file
+     file:
+      path: /home/ansadmin/demofile
+      state: touch
+       

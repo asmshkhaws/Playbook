@@ -1,0 +1,11 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  vars:
+    user: sunny
+  tasks:
+    - name: creating user {{user}}
+      user:
+        name: "{{user}}"
+

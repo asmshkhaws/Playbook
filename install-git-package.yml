@@ -1,0 +1,9 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Git
+      yum:
+        name: git
+        state: present

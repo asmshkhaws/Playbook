@@ -1,0 +1,9 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  tasks:
+    - name: install multiple packages
+      yum:
+        name: ['git', 'make', 'gcc', 'wget', 'telnet', 'mysql', 'tree', 'which', 'docker*']
+        state: present

@@ -1,0 +1,6 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  roles:
+    - setup-apache-role

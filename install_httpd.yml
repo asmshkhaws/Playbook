@@ -1,0 +1,13 @@
+---
+- name: My Test PB
+  hosts: all
+  become: true
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+    - name: Start service httpd  
+      service:
+        name: httpd
+        state: started

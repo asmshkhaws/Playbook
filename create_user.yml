@@ -1,0 +1,9 @@
+---
+ - name: My Test PB
+   hosts: all
+   become: true
+   tasks:
+   - name: Create User Sai
+     user:
+      name: sai
+       
